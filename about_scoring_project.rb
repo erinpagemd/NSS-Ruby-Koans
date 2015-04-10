@@ -31,7 +31,61 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 
 def score(dice)
   sum = 0
-  
+
+  sixes = dice.find_all { |item| item == 6}
+  fives = dice.find_all { |item| item == 5}
+  fours = dice.find_all { |item| item == 4}
+  threes = dice.find_all { |item| item == 3}
+  twos = dice.find_all { |item| item == 2}
+  ones = dice.find_all { |item| item == 1}
+
+  if sixes.length == 3
+    sum += 600
+  end
+
+  if fours.length == 3
+    sum += 400
+  end
+
+  if threes.length == 3
+    sum += 300
+  end
+
+  if twos.length == 3
+    sum += 200
+  end
+
+  if fives.length == 1
+    sum += 50
+  elsif fives.length == 2
+    sum += 100
+  elsif fives.length == 3
+    sum += 500
+  elsif fives.length == 4
+    sum += 550
+  elsif fives.length == 5
+    sum += 600
+  else
+    sum += 0
+  end
+
+  if ones.length == 1
+    sum += 100
+  elsif ones.length == 2
+    sum += 200
+  elsif ones.length == 3
+    sum += 1000
+  elsif ones.length == 4
+    sum += 1100
+  elsif ones.length == 5
+    sum += 1200
+  else
+    sum += 0
+  end
+
+
+  return sum
+
 
   # You need to write this method
 end
