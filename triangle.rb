@@ -15,13 +15,8 @@
 #
 def triangle(a, b, c)
 
-  s = (a + b + c) / 2.0
-
-  ok = (s - a) * (s - b) * (s - c)
-
-  if a <= 0 || b <= 0 || c <= 0 || ok <= 0 then
-    raise TriangleError
-  end
+  raise TriangleError if [a, b, c].any?{ |value| value <= 0 }
+  raise TriangleError unless (a + b) > c && (b + c) > a && (a + c) > b
 
   if ((a==b) && (a==c) && (b==c))
     return :equilateral
